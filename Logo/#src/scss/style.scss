@@ -1,0 +1,557 @@
+// //<МИКСИНЫ>===============================================================================================
+// @import "mixins.scss";
+@mixin font($font_name, $file_name, $weight, $style) {
+
+    @font-face {
+    font-family: $font_name;
+    font-display: swap;
+    src: url("../fonts/#{$file_name}.woff") format("woff"), url("../fonts/#{$file_name}.woff2") format("woff2");
+    font-weight: #{$weight};
+    font-style: #{$style};
+    }
+}
+
+
+//</МИКСИНЫ>===============================================================================================
+
+//<ШРИФТЫ>===============================================================================================
+
+//<Подключаем шрифты>=======================================================================================
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,regular,500,700,900");
+@import url("https://fonts.googleapis.com/css?family=Play:regular,700");
+@import 'fonts.scss';
+//</Подключаем шрифты>=======================================================================================
+
+//<Иконочные шрифты>==========================================================================================
+
+//</Иконочные шрифты>==========================================================================================
+
+//<Шрифт по умолчанию>==========================================================================================
+$fontfamily: "Roboto";
+//</Шрифт по умолчанию>==========================================================================================
+
+//</ШРИФТЫ>=======================================================================================================
+
+//<ПЕРЕМЕННЫЕ>===========================================================================================================
+$minwidth: 320px;
+$mw:1400;
+$maxWidthContainer: 1180;
+$md1:$maxWidthContainer +12;
+$md2:991.98;
+$md3:767.98;
+$md4:479.98;
+
+//</ПЕРЕМЕННЫЕ>===========================================================================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+@import "null.scss";
+body {
+
+}
+//</ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>===============================================================================================
+
+//<ОБОЛОЧКА>===========================================================================================================
+// .wrapper {
+// 	width: 100%;
+// 	min-height: 100%;
+// 	overflow: hidden;
+// }
+//</ОБОЛОЧКА>===========================================================================================================
+
+//<ОСНОВНАЯ СЕТКА>===========================================================================================================
+.container {
+	max-width:$maxWidthContainer+px;
+	margin: 0 auto;
+	padding: 0 20px;
+	// @media (max-width:$md1+px){max-width: 970px;}
+	// @media (max-width:$md2+px){max-width: 750px;}
+	@media (max-width:$md3+px){
+		padding:0 10px;
+	}
+}
+//</ОСНОВНАЯ СЕТКА>===========================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+// @import "forms.scss";
+// @import "ui.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>====================================================================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+//@import "../../js/fancybox/jquery.fancybox.scss";
+//@import "datepicker.scss";
+//@import "fontawesome.scss";
+//@import "popover.min.scss";
+//@import "baguetteBox.scss";
+//@import "pagging.scss";
+//@import "icons.scss";
+// @import "popup.scss";
+@import "header.scss";
+@import "ui.scss";
+@import "main-slider.scss";
+// @import "forms.scss";
+// @import "footer.scss";
+// @import "home.scss";
+//</ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>====================================================================================================
+
+//<ОСНОВНОЙ БЛОК>====================================================================================================
+
+
+
+
+//< БЛОК>====================================================================================================
+.btn {
+	display: inline-flex;
+	padding: 0px 25px;
+	justify-content: center;
+	align-items: center;
+	height: 39px;
+	background-color: #f68038;
+	color: #ffffff;
+	font-size: 12px;
+	font-weight: 900;
+	line-height: 18px;
+	text-transform: uppercase;
+	transition: all 0.3s ease 0s;
+	@media(min-width: 992px) {
+		&:hover {
+			background-color: #e95e08;
+		}
+	}
+}
+//Главное меню============================================
+
+.page {
+	padding: 160px 0 0 0;
+	flex: 1 1 auto;
+	@media(max-width: $md3+px) {
+		padding: 133px 0 0 0;
+	}
+	@media(max-width: 640px) {
+		padding: 85px 0 0 0;
+	}
+	
+	&__container {
+		@media(min-width: $md2+px) {
+			display: flex;
+		}
+		
+	}
+
+	&__side {
+		position: relative;
+		z-index: 10;
+		flex: 0 0 260px;
+		@media(min-width: $md2+px) {
+			margin: 0 0 30px 0;
+		}
+	}
+
+	&__menu {
+	}
+
+	&__content {
+			flex: 1 1 auto;
+			padding: 0 0 0 30px;
+		
+	}
+	&__search {
+		position: relative;
+		z-index: 5;
+		margin: 0 0 22px 0;
+	}
+	&__slider {
+		margin: 0 0 65px 0;
+	}
+}
+
+.menu-page {
+
+	position: relative;
+	background: url('../img/bg_menu.jpg') top repeat;
+
+
+	&__header {
+		padding: 20px;
+		display: flex;
+		align-items: center;
+
+	}
+
+	&__title {
+		flex: 1 1 auto;
+		color: #ffffff;
+		font-family: "Uni Sans";
+		line-height: 35/30 * 100%;
+		font-size: 30px;
+		font-weight: 900;
+		text-transform: uppercase;
+		letter-spacing: 0.75px;
+	}
+
+	&__burger {
+		flex: 0 0 36px;
+		width: 36px;
+		height: 35px;
+		background-color: #068292;
+		position: relative;
+		cursor: pointer;
+		z-index: 5;
+		padding: 10px 6px;
+		span{
+            transition: all 0.3s ease 0s;
+            top: calc(50% - 1px);
+            left: 0px;
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #fff;
+			&:first-child{top: 0px;}
+			&:last-child{top: auto;bottom: 0px;}
+		}
+		&.active{
+			span{
+                transform: scale(0);
+				&:first-child{
+                    transform: rotate(-45deg);
+                    top: calc(50% - 1px);
+                }
+				&:last-child{
+                    transform: rotate(45deg);
+                    bottom: calc(50% - 1px);
+                }
+			}
+		}
+	
+	}
+
+	&__lines {
+		height: 16px;
+		position: relative;
+	}
+
+	&__body {
+		display: none;
+		&.active {
+			display: block;
+		}
+		
+	}
+
+	&__list {
+		>li{
+			border-bottom: 1px solid #1aa7b9;
+		}
+	}
+	&__parent {
+		.menu-page__link {
+			&::after{
+				content: "";
+				position: absolute;
+				transition: all 0.3s ease 0s;
+				top: 50%;
+				right: 10px;
+				width: 14px;
+				height: 14px;
+				transform: translate(0px, -50%);
+				background: url('../img/icons/menu/menu_arrow.png') 0 0 no-repeat;
+			}
+		}
+		&._active {
+			
+			.submenu-page__item {
+				z-index: 2;
+				transform: translate(0px, 0px);	
+			}
+			.menu-page__link {
+				background-color: #098494;
+			}
+		}
+	}
+
+	&__link {
+		color: #ffffff;
+		font-size: 12px;
+		font-weight: 300;
+		letter-spacing: 0.3px;
+		display: block;
+		padding: 12px 20px;
+		position: relative;
+		@media(min-width: $md2+px) {
+			&:hover {
+				background-color: #098494;
+			}
+		}
+		@media(max-width: $md2+px) {
+			font-size: 14px;
+		}
+	}
+	
+
+	&__submenu {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			height: 100%;
+			left: 100%;		
+			overflow: hidden;
+	}
+
+.submenu-page {
+
+	&__item {
+		width: 280px;
+		border: 2px solid #098494;
+		background-color: #ffffff;
+		position: absolute;
+		top: 0;
+		left: 0%;
+		width: 100%;
+		height: 100%;
+		transform: translate(-100%, 0px);
+		transition: all 0.3s ease 0s;
+	}
+
+	&__menu {
+		border-bottom: 1px solid #dedede;
+		padding: 20px 0;
+		li {
+
+		}
+	}
+
+	&__link {
+		color: #1ab9ce;
+		font-size: 12px;
+		font-weight: 300;
+		letter-spacing: 0.3px;
+		padding: 10px 40px;
+		display: block;
+		@media(min-width: $md2+px) {
+			&:hover{
+				color: #ffffff;
+				background-color: #71c7d3;
+			}
+		}
+		
+	}
+
+	&__product {
+		padding: 0 15px;
+
+	}
+}
+
+.item-product {
+	padding: 15px 0;
+	position: relative;
+	&__labels {
+		position: absolute;
+		left: 15px;
+		top: 15px;
+	}
+
+	&__label {
+		margin: 0 0 10px 0;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 21px;
+		padding: 0 10px;
+		background-color: #fd8424;
+		color: #ffffff;
+		font-weight: 900;
+		text-transform: uppercase;
+		border-radius: 15px;
+	}
+
+	&__image {
+		height: 195px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		padding: 10px 0;
+		img {
+			max-width: 100%;
+			max-height: 175px;
+		}
+	}
+	
+	&__body {
+		padding: 0 10px;
+	}
+
+	&__title {
+		color: #36949f;
+		font-size: 16px;
+		font-weight: 300;
+		line-height: 24px;
+		margin: 0 0 10px 0;
+		@media(min-width: $md2+px) {
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	&__footer {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	&__old-price {
+		flex: 1 1  100%;
+		color: #999999;
+		font-family: Roboto;
+		font-size: 16px;
+		font-weight: 300;
+		line-height: 16px;
+		text-decoration: line-through;
+		text-align: right;
+		padding: 15px 0 0 0;
+		&::after {
+			font-size: 12px;
+		}
+	}
+
+	&__add {
+		width: 40px;
+		height: 40px;
+		background: url('../img/icons/menu/cart_submenu.jpg') left no-repeat;
+	}
+
+	&__price {
+		color: #333333;
+		font-size: 24px;
+		font-weight: 900;
+		&::after {
+			font-size: 18px;
+		}
+	}
+}
+
+}
+
+//Поисковая срока----------------------------------------
+.search-page {
+	position: relative;
+	display: flex;
+	&__select {
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		background-color: #f3f3f3;
+		padding: 0 14px;
+	}
+
+	&__title {
+		color: #666666;
+		font-weight: 300;
+		display: flex;
+		align-items: center;
+		span {
+			border-bottom: 1px dashed;
+			margin: 0 13px;	
+			&:last-child {
+				display: none;
+			}
+		}
+
+		&::before {
+			content: '';
+			background: url('../img/icons/menu/search.png') 0 0 no-repeat;
+			width: 17px;
+			height: 17px;	
+		}
+		&::after {
+			content: '';
+			background: url('../img/icons/menu/arrow_search.png') right no-repeat;
+			width: 10px;
+			height: 10px;
+			transition: all 0.3s ease 0s;
+		}
+		&.active {
+			&::after {
+				transform: rotate(-180deg);
+			}
+		}
+		&._categories {
+			span {
+				display: none;
+				&:last-child{
+					display: block;
+				}
+			}
+
+		}
+	}
+
+	&__categories {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		width: 100%;
+	}
+
+	&__input {
+		border-top: 2px solid #f2f2f2;
+		border-bottom: 2px solid #f2f2f2;
+		flex: 1 1 auto;
+		.input {
+			height: 100%;
+		}
+	}
+
+	&__btn {
+	}
+}
+.categories-search {
+	display: none;
+	background-color: #fff;
+	border: 1px solid #f3f3f3;
+	border-bottom: 4px solid #f68038;
+
+	&__row {
+		display: flex;
+	}	
+
+	&__column {
+		flex: 0 1 33.333%;
+		padding: 27px 40px;
+		border-right: 1px solid #f3f3f3;
+		&:last-child{
+			border: 0;
+		}
+	}
+
+	&__list {
+		li {
+			margin: 0 0 10px 0; 
+			&:last-child {
+				margin: 0;
+			}
+		}
+	}
+
+	&__checkbox {
+		.checkbox__input {
+			&:checked + .checkbox__text {
+				color: #f68038;
+			}
+		}
+		.checkbox__text {
+			color: #999999;
+			font-size: 12px;
+			font-weight: 300;
+			line-height: 36px;
+			letter-spacing: 0.3px;
+			&::before {
+				display: none;
+			}
+	
+		}
+	
+	}
+}
+
